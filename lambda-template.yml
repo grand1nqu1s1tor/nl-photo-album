@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS Lambda Functions Deployment
+
+Resources:
+  IndexPhotosLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index-photos.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: index-photos
+      Code:
+        S3Bucket: codepipeline-us-east-2-441521765130
+        S3Key: lambda/index-photos.zip
+      Runtime: python3.12
+      Timeout: 30
+
+  SearchPhotosLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: search-photos.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: search-photos
+      Code:
+        S3Bucket: codepipeline-us-east-2-441521765130
+        S3Key: lambda/search-photos.zip
+      Runtime: python3.12
+      Timeout: 30
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: [lambda.amazonaws.com]
+            Action: ['sts:AssumeRole']
+      Path: "/"
+      Policies:
+        - PolicyName: LambdaExecutionPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource: arn:aws:s3:::codepipeline-us-east-2-441521765130/*
+
