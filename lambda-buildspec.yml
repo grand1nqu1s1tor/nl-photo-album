@@ -1,4 +1,5 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
@@ -12,5 +13,6 @@ phases:
       - aws cloudformation package --template-file lambda-template.yml --s3-bucket codepipeline-us-east-2-441521765130 --output-template-file output-lambda-template.yml
 artifacts:
   files:
-    - lambda-template.yml
     - output-lambda-template.yml
+  # Include the following if you need to output the actual Lambda function code packages
+  # - path/to/your/lambda/function.zip
