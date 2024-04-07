@@ -2,10 +2,15 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-        python: 3.12
+      python: 3.12
+  pre_build:
+    commands:
+      - echo Installing source
   build:
     commands:
+      - echo Build started on `date`
       - aws cloudformation package --template-file lambda-template.yml --s3-bucket codepipeline-us-east-2-441521765130 --output-template-file output-lambda-template.yml
- files:
+artifacts:
+  files:
     - lambda-template.yml
     - output-lambda-template.yml
