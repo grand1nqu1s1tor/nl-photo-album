@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+#photosearch {
+    background: #fff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#photosearch input[type='text'] {
+    width: calc(100% - 110px);
+    height: 40px;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+#photosearch input[type='submit'] {
+    width: 100px;
+    height: 40px;
+    border: none;
+    background: #5cb85c;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 17px;
+}
+
+#photosearch input[type='submit']:hover {
+    background: #4cae4c;
+}
+
+.Upload_files {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Upload_files h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.Upload_files input[type='file'],
+.Upload_files input[type='text'] {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.Upload_files button {
+    width: calc(30% - 20px);
+    height: 42px;
+    background: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.Upload_files button:hover {
+    background: #286090;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+#searchResults figure {
+    margin: 10px 0; /* Adds a vertical margin, but no horizontal margin */
+    width: 100%; /* Makes the figure take the full width of its container */
+}
+
+#searchResults img {
+    width: auto; /* Keeps the image at its natural size */
+    max-width: 100%; /* Ensures the image is not wider than its container */
+    height: auto; /* Keeps the image height proportional to its width */
+    display: block; /* Ensures the image is block-level, so each one appears on a new line */
+    margin: auto; /* Centers the image in the figure */
+}
+
+
+@media only screen and (max-width: 760px) {
+    .Upload_files input[type='file'],
+    .Upload_files input[type='text'] {
+        width: 100%;
+    }
+
+    .Upload_files button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #searchResults figure {
+        width: 100%;
+    }
+}
