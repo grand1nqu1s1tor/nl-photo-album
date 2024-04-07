@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: index-photos.lambda_handler
       Role: !GetAtt LambdaExecutionRole.Arn
-      FunctionName: index-photos
+      FunctionName: index-photos-cf
       Code:
         S3Bucket: codepipeline-us-east-2-441521765130
         S3Key: lambda/index-photos.zip
@@ -19,7 +19,7 @@ Resources:
     Properties:
       Handler: search-photos.lambda_handler
       Role: !GetAtt LambdaExecutionRole.Arn
-      FunctionName: search-photos
+      FunctionName: search-photos-cf
       Code:
         S3Bucket: codepipeline-us-east-2-441521765130
         S3Key: lambda/search-photos.zip
