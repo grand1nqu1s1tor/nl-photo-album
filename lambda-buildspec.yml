@@ -6,8 +6,6 @@ phases:
   build:
     commands:
       - aws cloudformation package --template-file lambda-template.yml --s3-bucket codepipeline-us-east-2-441521765130 --output-template-file output-lambda-template.yml
-artifacts:
-  type: zip
-  files:
+ files:
     - lambda-template.yml
     - output-lambda-template.yml
