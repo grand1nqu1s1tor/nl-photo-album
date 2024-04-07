@@ -13,7 +13,7 @@ phases:
       - cd lambda
       - zip -r ../functions.zip . # Zips everything in the current directory
       - cd ..
-      - aws cloudformation package --template-file lambda-template.yml --s3-bucket <your-bucket-name> --output-template-file output-lambda-template.yml
+      - aws cloudformation package --template-file lambda-template.yml --s3-bucket codepipeline-us-east-2-441521765130 --output-template-file output-lambda-template.yml
 artifacts:
   files:
     - functions.zip
