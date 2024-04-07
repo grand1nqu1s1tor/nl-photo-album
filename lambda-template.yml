@@ -10,7 +10,7 @@ Resources:
       FunctionName: index-photos-cf
       Code:
         S3Bucket: codepipeline-us-east-2-441521765130
-        S3Key: LambdaDeploymentPipe/BuildArtif/index-photos.zip
+        S3Key: LambdaDeploymentPipe/BuildArtif/functions.zip
       Runtime: python3.12
       Timeout: 30
 
@@ -22,7 +22,7 @@ Resources:
       FunctionName: search-photos-cf
       Code:
         S3Bucket: codepipeline-us-east-2-441521765130
-        S3Key: LambdaDeploymentPipe/BuildArtif/search-photos.zip
+        S3Key: LambdaDeploymentPipe/BuildArtif/functions.zip
       Runtime: python3.12
       Timeout: 30
 
@@ -52,4 +52,3 @@ Resources:
                 Action:
                   - s3:GetObject
                 Resource: arn:aws:s3:::codepipeline-us-east-2-441521765130/*
-
