@@ -15,6 +15,7 @@ phases:
       - cd ..
       - aws cloudformation package --template-file lambda-template.yml --s3-bucket cf-artifact-bucket --output-template-file output-lambda-template.yml
 artifacts:
+  type: zip
   files:
     - functions.zip
     - lambda-template.yml
