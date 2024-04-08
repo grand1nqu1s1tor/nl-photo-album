@@ -9,8 +9,8 @@ Resources:
       Role: !GetAtt LambdaExecutionRole.Arn
       FunctionName: index-photos-cf
       Code:
-        S3Bucket: codepipeline-us-east-2-441521765130
-        S3Key: LambdaDeploymentPipe/BuildArtif/functions.zip
+        S3Bucket: cf-artifact-bucket
+        S3Key: PhotoAlbumCodePipeli/BuildArtif/functions.zip
       Runtime: python3.12
       Timeout: 30
 
@@ -21,8 +21,8 @@ Resources:
       Role: !GetAtt LambdaExecutionRole.Arn
       FunctionName: search-photos-cf
       Code:
-        S3Bucket: codepipeline-us-east-2-441521765130
-        S3Key: LambdaDeploymentPipe/BuildArtif/functions.zip
+        S3Bucket: cf-artifact-bucket
+        S3Key: PhotoAlbumCodePipeli/BuildArtif/functions.zip
       Runtime: python3.12
       Timeout: 30
 
@@ -51,4 +51,4 @@ Resources:
               - Effect: Allow
                 Action:
                   - s3:GetObject
-                Resource: arn:aws:s3:::codepipeline-us-east-2-441521765130/*
+                Resource: arn:aws:s3:::cf-artifact-bucket/*
