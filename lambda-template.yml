@@ -1,30 +1,32 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: AWS Lambda Functions Deployment
+Description: An AWS CloudFormation template for creating two Lambda functions.
 
 Resources:
-  IndexPhotosLambdaFunction:
+  IndexPhotosFunction:
     Type: AWS::Lambda::Function
     Properties:
       Handler: index-photos.lambda_handler
-      Role: !GetAtt LambdaExecutionRole.Arn
-      FunctionName: index-photos-cf
-      Code:
-        S3Bucket: cf-artifact-bucket
-        S3Key: PhotoAlbumCodePipeli/BuildArtif/functions.zip
       Runtime: python3.12
+      Code:
+        S3Bucket: ''
+        S3Key: ''   
+      Description: A Lambda function for indexing photos.
+      MemorySize: 128
       Timeout: 30
+      Role: !GetAtt LambdaExecutionRole.Arn
 
-  SearchPhotosLambdaFunction:
+  SearchPhotosFunction:
     Type: AWS::Lambda::Function
     Properties:
       Handler: search-photos.lambda_handler
-      Role: !GetAtt LambdaExecutionRole.Arn
-      FunctionName: search-photos-cf
-      Code:
-        S3Bucket: cf-artifact-bucket
-        S3Key: PhotoAlbumCodePipeli/BuildArtif/functions.zip
       Runtime: python3.12
+      Code:
+        S3Bucket: '' 
+        S3Key: ''
+      Description: A Lambda function for searching photos.
+      MemorySize: 128
       Timeout: 30
+      Role: !GetAtt LambdaExecutionRole.Arn
 
   LambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -34,9 +36,10 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              Service: [lambda.amazonaws.com]
-            Action: ['sts:AssumeRole']
-      Path: "/"
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
       Policies:
         - PolicyName: LambdaExecutionPolicy
           PolicyDocument:
@@ -44,11 +47,25 @@ Resources:
             Statement:
               - Effect: Allow
                 Action:
-                  - logs:CreateLogGroup
-                  - logs:CreateLogStream
-                  - logs:PutLogEvents
-                Resource: arn:aws:logs:*:*:*
-              - Effect: Allow
-                Action:
-                  - s3:GetObject
-                Resource: arn:aws:s3:::cf-artifact-bucket/*
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource: 'arn:aws:logs:*:*:*'
+              # Include any additional permissions your Lambda functions need here
+
+Outputs:
+  IndexPhotosFunctionName:
+    Description: "The name of the Index Photos Lambda function."
+    Value: !Ref IndexPhotosFunction
+
+  IndexPhotosFunctionArn:
+    Description: "The ARN of the Index Photos Lambda function."
+    Value: !GetAtt IndexPhotosFunction.Arn
+
+  SearchPhotosFunctionName:
+    Description: "The name of the Search Photos Lambda function."
+    Value: !Ref SearchPhotosFunction
+
+  SearchPhotosFunctionArn:
+    Description: "The ARN of the Search Photos Lambda function."
+    Value: !GetAtt SearchPhotosFunction.Arn
