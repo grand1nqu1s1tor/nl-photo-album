@@ -15,10 +15,11 @@ phases:
     commands:
       - echo Build started on `date`
       # If you have a specific build process for your lambda, include those commands here
-      - aws cloudformation package --template-file lambda/lambda-template.yml --s3-bucket cf-artifact-bucket --output-template-file output-lambda-template.yml
+      - aws cloudformation package --template-file lambda-template.yml --s3-bucket cf-artifact-bucket --output-template-file output-lambda-template.yml
 artifacts:
   type: zip
   files:
     - lambda/**/*
+    - lambda-template.yml
     - output-lambda-template.yml
 
