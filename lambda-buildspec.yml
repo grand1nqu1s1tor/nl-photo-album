@@ -15,10 +15,10 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - sam package --template-file lambda-template.yaml --s3-bucket cf-artifact-bucket --output-template-file output-template.yaml
+      - sam package --template-file lambda-template.yml --s3-bucket cf-artifact-bucket --output-template-file output-template.yml
 artifacts:
   type: zip
   files:
-    - output-template.yaml
+    - output-template.yml
 
 
