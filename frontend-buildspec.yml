@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+  pre_build:
+    commands:
+  build:
+    commands:
+      - echo "Build stage - Copying files"
+artifacts:
+  base-directory: 'frontend' 
+  files:
+    - '**/*' # This includes all files in the frontend directory
