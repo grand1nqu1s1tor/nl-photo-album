@@ -8,6 +8,7 @@ phases:
   build:
     commands:
       - echo "Build stage - Copying files"
+      - aws s3 sync frontend s3://frontend-bucket-s3 --delete
 artifacts:
   base-directory: 'frontend' 
   files:
