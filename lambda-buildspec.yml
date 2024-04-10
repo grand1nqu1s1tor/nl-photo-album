@@ -5,21 +5,20 @@ phases:
     runtime-versions:
       python: 3.12
     commands:
+      - echo Installing AWS SAM CLI...
+      - pip install aws-sam-cli
       - echo Installing source dependencies...
-      #- pip install -r lambda/requirements.txt -t lambda/
+      # - pip install -r requirements.txt
   pre_build:
     commands:
       - echo Pre-build phase...
-      # Add any pre-build steps like running tests here
   build:
     commands:
       - echo Build started on `date`
-      # If you have a specific build process for your lambda, include those commands here
-      - aws cloudformation package --template-file lambda-template.yml --s3-bucket cf-artifact-bucket --output-template-file output-lambda-template.yml
+      - sam package --template-file lambda-template.yaml --s3-bucket cf-artifact-bucket --output-template-file output-template.yaml
 artifacts:
   type: zip
   files:
-    - lambda/**/*
-    - lambda-template.yml
-    - output-lambda-template.yml
+    - output-template.yaml
+
 
