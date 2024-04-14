@@ -88,7 +88,7 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       Code:
-        S3Bucket: cf-lambdas-bucket
+        S3Bucket: cf-lambdas-bucket-3
         S3Key: index-photos.zip      
       Handler: index-photos.lambda_handler 
       Role: !GetAtt IndexLambdaExecutionRole.Arn
@@ -220,7 +220,7 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        S3Bucket: cf-lambdas-bucket
+        S3Bucket: cf-lambdas-bucket-3
         S3Key: search-photos.zip  
       Handler: search-photos.lambda_handler 
       Role: !GetAtt SearchLambdaExecutionRole.Arn
