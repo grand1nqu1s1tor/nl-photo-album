@@ -107,6 +107,5 @@ def get_photo_path(keys):
                 if key not in output:
                     output.append(key)
                     print(f"Added document ID to output: {key}")
-    #Test COmmit to 
     print(f"Final output: {output}")
     return output
